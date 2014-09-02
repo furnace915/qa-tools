@@ -3,9 +3,6 @@ import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
-import java.util.Properties;
-
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 

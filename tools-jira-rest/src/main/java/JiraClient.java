@@ -1,6 +1,5 @@
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
 
 import com.atlassian.jira.rest.client.JiraRestClient;
@@ -19,7 +18,6 @@ public class JiraClient {
 	private static AsynchronousJiraRestClientFactory factory;
 	private static JiraRestClient jiraRestClient;
 	private static URI uri;
-	private static String query;
 	private SearchRestClient searchClient;
 	
 	public JiraClient(String url, String uid, String pswd) {
