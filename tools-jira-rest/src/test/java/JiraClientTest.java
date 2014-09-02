@@ -18,11 +18,11 @@ public class JiraClientTest {
 	private String pwd;
 
 	@Before
-	public void setUp() throws Exception {	
-			url = System.getenv("url");
-			id = System.getenv("id");
-			pwd = System.getenv("pwd");
-			jira = new JiraClient(url, id, pwd);
+	public void setUp() throws Exception {
+		url = System.getProperty("env.url");
+		id = System.getProperty("env.id");
+		pwd = System.getProperty("env.pwd");
+		jira = new JiraClient(url, id, pwd);
 	}
 
 	@Test
@@ -36,11 +36,6 @@ public class JiraClientTest {
 		query = "project = \"Ocean - Search Engine\" AND issuetype = \"Production Bug\""
 				+ " AND Status not in (Closed) AND priority = \"P1 Escalation\"";
 		assertThat(jira.retrieveIssueCount(query), not(greaterThan(0)));
-	}
-
-	@After
-	public void tearDown() throws Exception {
-
 	}
 
 }
