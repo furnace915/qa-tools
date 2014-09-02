@@ -12,9 +12,9 @@ import com.atlassian.util.concurrent.Promise;
 
 public class JiraClient {
 
-	private static final String JIRA_URL = "http://jira.cengage.com";
-	private static final String UID = "oceanuser";
-	private static final String PWD = "oju0987";
+	private String baseUrl;
+	private String id;
+	private String pwd;
 	
 	private static AsynchronousJiraRestClientFactory factory;
 	private static JiraRestClient jiraRestClient;
@@ -22,15 +22,21 @@ public class JiraClient {
 	private static String query;
 	private SearchRestClient searchClient;
 	
-	public JiraClient() {
+	public JiraClient(String url, String uid, String pswd) {
+		
+		this.baseUrl = url;
+		this.id = uid;
+		this.pwd = pswd;
 		factory = new AsynchronousJiraRestClientFactory();
+		
 		try {
-			uri = new URI(JIRA_URL);
+			uri = new URI(baseUrl);
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		jiraRestClient = factory.createWithBasicHttpAuthentication(uri, UID, PWD);
+		
+		jiraRestClient = factory.createWithBasicHttpAuthentication(uri, id, pwd);
 		searchClient = getSearchClient(jiraRestClient);
 	}
 
